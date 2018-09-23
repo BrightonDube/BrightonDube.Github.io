@@ -86,17 +86,25 @@
                     <div class="welcome-right">
                         <div class="welcome-text">
                              <h1>The Tokensale will be going live soon!</h1>
-                            <h4>On the 21st of September, the crowdsale will begin and you will be able to buy the
-                                Loonie Tokens using any of the methods below. If you are buying with Eth, simply send your 
+                            <h4>The crowdsale starts on September 28, 2018. <br>
+                             If you are buying with Eth, simply send your 
                                 Eth from the wallet that you want to receive your tokens to (must be an ERC20 compatible wallet).
                                 Eth must be sent to the smart contract address listed below, the smart contract will immediately
                                 send your tokens to your wallet.
 
                             </h4>
-                            <p>Should you wish to buy using Bitcoin or Litecoin, please send your BTC to the addresses below. Your tokens
-                                will be sent periodically since this will be done by the the team.
+                            <p>Should you wish to buy using Bitcoin or Litecoin, please send your BTC to the addresses below. Once you have made the payment, fill the form provided with complete details. Your tokens will be sent manually once the transaction has been 
+                                completely verified by the team.
+                                If you want your tokens immediately, then please use Eth for payment!
+                                <br>
+                                <br>
+
+                                <b>Happy buying!</b>
+                    
                             </p>
-                        </div>
+
+                        </div>                     
+
                         
                     </div>
                 </div>
@@ -109,6 +117,73 @@
         </div>
     </div>
     <!--welcome area end-->
+
+    <!-- Contribution area starts -->
+    <div class="contri">
+        <div class="container">
+            <div class="bitcoin">
+
+                        <h1>ETH Contributions</h1>
+                        <h5>1Eth = 25,000 LNI</h5>
+                        <p>Send Ethereum Payment here: <br> <img class="wallets img-fluid" src=""> <br>
+                        </p>
+
+                        <br><div class="purchase-form form-group">
+                            <form action="#">
+                                <input type="number" class="form-control-lg tokenInput" placeholder="How many Tokens" id="eth">
+                                
+                            </form>
+                            </div>
+                                
+                                <p>Send only <b><span id="ethAmount"> </span></b> ETH to <b> </b>
+                                then check your wallet!</p>
+                                <a href="" class="gradient-btn v2 mr-20" id="compEth">Calculate</a>
+                       
+                    </div>
+                        <div class="bitcoin">
+                            <h1>BTC Contributions</h1>
+                            <h5>1BTC = 694,635 LNI</h5>
+                            <p>Send Bitcoin Payment here: <br> <img class="wallets img-fluid" src="assets/img/bitcoin_address.png"> <br>
+                                <h5>12gQLb39oXAcgYUbLkyNnY787X8d8pnKP5</h5>
+
+                                </p>                            
+                                <br>
+                            <div class="purchase-form">
+                            <form action="#">
+                                <input type="number" class="tokenInput form-control-lg" placeholder="How many Tokens" id="btc">
+                                
+                            </form>
+                            </div>
+                                
+                                <p>Send only <b><span id="btcAmount"> </span></b> BTC to <b>12gQLb39oXAcgYUbLkyNnY787X8d8pnKP5 </b>
+                                then click "Conclude Purchase".</p>
+                                <a href="" class="gradient-btn v2 mr-20" id="compBtc">Calculate</a>
+                            <a href="https://goo.gl/forms/7mXyW6SbXCH3YxFT2" target="_blank" class="gradient-btn v2 mr-20">Conclude Purchase</a>
+                        </div>
+                        <div class="bitcoin">
+                            <h1>LTC Contributions</h1>
+                            <h5>1LTC = 6250 LNI</h5>
+                            <p>Send Litecoin Payment here: <br> <img class="wallets img-fluid" src="assets/img/Litecoin_address.png"> <br>
+                                <h5>LbGau7FNnamgyJZqnPb6pugFnCXWjNQib3</h5>
+                            </p> 
+                            <br><div class="purchase-form">
+                            <form action="#">
+                                <input type="number" class="tokenInput form-control-lg" placeholder="How many Tokens" id="ltc">
+                                
+                            </form>
+                            </div>
+                                
+                                <p>Send only <b><span id="ltcAmount"> </span></b> LTC to <b>LbGau7FNnamgyJZqnPb6pugFnCXWjNQib3 </b>
+                                then click "Conclude Purchase".</p>
+                                <a href="" class="gradient-btn v2 mr-20" id="compLtc">Calculate</a>
+
+
+                            <a href="https://goo.gl/forms/F8FLEwJVgm8FtKDf2" target="_blank" class="gradient-btn v2 mr-20">Conclude Purchase</a>
+                        </div>
+                    </div>
+                </div>
+    <!-- Contribution area ends -->
+
     <!--community area start-->
     <div class="community-area wow fadeInUp section-padding" id="contact">
             <div class="container">
@@ -220,18 +295,6 @@
         </div>
         <!--footer area end-->
     
-       <!--  <script type="text/javascript">
-            const nav = document.getElementById("nav");
-    window.onscroll = function(){
-        if(window.pageYOffset>100){
-            nav.style.background = "#000D47";
-
-        }
-        else{
-            nav.style.background = "transparent";
-        }
-    }
-        </script> -->
         <!-- jquery 2.2.4 js-->
         <script src="assets/js/jquery-2.2.4.min.js"></script>
         <!-- popper js-->
@@ -250,5 +313,48 @@
         <script src="assets/js/particles.min.js"></script>
         <!-- main js-->
         <script src="assets/js/main.js"></script>
+        <script type="text/javascript">
+        //Price calculators
+            const ethPrice = 1/25000;
+            const btcPrice = 1/694635;
+            const ltcPrice = 1/6250;
+
+            var calculateEth = function(tokens){
+              return (tokens*ethPrice).toFixed(8);
+
+            }
+
+            var calculateBtc = function(tokens){
+              return (tokens*btcPrice).toFixed(8);
+
+            }
+
+            var calculateLtc = function(tokens){
+              return (tokens*ltcPrice).toFixed(8);
+            }
+
+            $("#compEth").click(function(e){
+                e.preventDefault();
+              let howMany = document.getElementById("eth").value;
+              document.getElementById("ethAmount").innerHTML = calculateEth(howMany);
+              
+            });
+            $("#compBtc").click(function(e){
+                e.preventDefault();
+              let howMany = document.getElementById("btc").value;
+              document.getElementById("btcAmount").innerHTML = calculateBtc(howMany);
+              
+            });
+            $("#compLtc").click(function(e){
+                e.preventDefault();
+              let howMany = document.getElementById("ltc").value;
+              document.getElementById("ltcAmount").innerHTML = calculateLtc(howMany);
+              
+            });
+
+
+
+    </script>
+      
       </body>
     </html>

@@ -116,6 +116,25 @@
       }
     }
   });
+    //If the starting date has not arrived mention that
+    let now = new Date().getTime();
+    let startDate = new Date("September 28, 2018 00:00:00").getTime();
+    if (now < startDate) {
+        
+        document.getElementById("live").innerHTML = "Will Start Soon.";
+        console.log("It works");
+        
+          
+        }
+    
+    //Logic for the progress bar
+    let coinsSold = 0;
+    const totalSupply = 130000000;
+    let percentageSold = Math.round((coinsSold / totalSupply)*100);
+    
+    document.getElementById('sold1').innerHTML = coinsSold/1000000 ; //In millions
+    document.getElementById("sold").innerHTML = coinsSold/1000000;    
+    document.getElementById("pBar").setAttribute("style", "width: " + percentageSold + "%"); //moves the progress bar
 
     //scrolling menu adding active class 
     var scrolllink = $('.scroll');
@@ -165,7 +184,12 @@
           document.getElementById("ended").innerHTML = "ICO Has Ended";
           document.getElementById("counter").innerHTML = "Sale has ended!";
         }
+         
       }, 1000);
+
+      
+           
+            
 
       //welcome particles
 
